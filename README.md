@@ -23,50 +23,14 @@ This file is hosted on the TFTP server (e.g., a desktop running Tftpd64). The sw
 
 ```text
 ! --- Baseline Security Hardening ---
-no service tcp-small-servers
-no service udp-small-servers
-no service finger
-no service pad
-service password-encryption
-no cdp run
-no ip http server
-no ip http secure-server
-no ip source-route
-no ip domain-lookup
+Write your Hardening Commands
 !
-! --- Access Control & SSH ---
-enable secret Net0ps@Kol123
-username admin privilege 15 secret Net0ps@Kol123
-ip domain-name netops.local
-crypto key generate rsa modulus 2048
-ip ssh version 2
-ip ssh time-out 60
-ip ssh authentication-retries 3
-!
-! --- Line Security ---
-line con 0
- exec-timeout 5 0
- logging synchronous
- login local
-line vty 0 15
- exec-timeout 5 0
- transport input ssh
- login local
-!
-! --- Interface Prep ---
-interface range FastEthernet0/1 - 24
- shutdown
- no shutdown
-!
-banner motd ^C
-  *** AUTHORISED ACCESS ONLY ***
-  Unauthorised access is strictly prohibited.
-^C
-ntp server 192.168.1.1
-logging buffered 16384
-logging console critical
-!
-! --- ZTP Auto-Save Macro ---
+
+## Save Everything
+Below commands make sure that your efforts dont go vain when you reboot the switch. Basically it saves all the information stored in switch
+
+
+! --- Auto-Save ---
 event manager applet AUTO_SAVE_ZTP
  event timer countdown time 60
  action 1.0 cli command "enable"
@@ -74,6 +38,6 @@ event manager applet AUTO_SAVE_ZTP
  action 3.0 cli command "no event manager applet AUTO_SAVE_ZTP"
  action 4.0 cli command "end"
  action 5.0 cli command "write memory"
- action 6.0 syslog msg "ZTP Auto-Save complete. Configuration written to NVRAM."
+ action 6.0 syslog msg "Auto-Save complete"
 !
 end
