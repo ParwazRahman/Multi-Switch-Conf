@@ -1,19 +1,15 @@
-username kolsw privilege 15 password Net0ps@Kol123
-enable password Net0ps@Kol123
-interface Vlan53
+username *** privilege 15 password ***
+enable password ***
+interface Vlan***
 no ip redirects
 no ip unreachables
 no ip proxy-arp
 exit
 
-ip default-gateway 10.18.58.1
+ip default-gateway *.*.*.*
 
-vlan 53
-name Net-Mgmt-New
-
-int gi1/0/24
-sw mode trunk
-exit
+vlan **
+name Net-Mgmt
 
 ip forward-protocol nd
 no ip finger 
@@ -31,104 +27,23 @@ no ip domain lookup
 
 service tcp-keepalives-in
 service tcp-keepalives-out
-ip domain name tcs.com
+ip domain name ***
 
 
 crypto key generate rsa modulus 2048
 
 banner exec ^C ********************************************************************************
-1.This computer system and all the components (including virtual components) is
-  the property  of Tata Consultancy Services Limited (TCSL) and is intended
-  solely for the usage of employees and  authorized clients of TCSL in
-  accordance with its policies as may be in force from time to time.
-  Unauthorized access or use of this system  may attract legal action, criminal
-  and/or civil.
-2.This system may be monitored in accordance with TCSL  security policy.
-3.By using or accessing this system, you hereby expressly consent to
-  (a)be bound by all policies and regulations of TCSL  then in existence
-     concerning the use and/or access of this system; and
-  (b)abide by all directions given by TCSL concerning the use and/or access
-     of this system;and
-  (c)TCSL  or its agents or representatives may monitor your activities while
-     you are using or accessing this system (including any data that is
-     transmitted by you) and this will not violate  your privacy rights; and
-  (d)be liable for any loss, damages or expenses  that may be caused to or
-     suffered by TCSL  due to  your use and/or access of this system and you
-     agree to indemnify TCSL  against all such losses,  damages or expenses
-     that may occur due to your use and/or  access of this system.
-4.In all matters related to the usage and/or  access of this system, the laws
-  of India shall be the governing law and the courts at Mumbai, India shall
-  have exclusive jurisdiction in all matters related thereto.
-5.This system and the contents hereof are the  sole and exclusive property of
-  TCSL  and may not be reproduced, stored, copied or archived in any manner
- whatsoever either in full or in parts without the prior express consent of
-  TCSL. TCSL reserve all rights not expressly granted by TCSL in writing.
-6.If you do not agree to any of the terms above,  then do not use and/or
-  access this system.
+
 ********************************************************************************
 ^C
 
 banner login ^C ********************************************************************************
-1.This computer system and all the components (including virtual components) is
-  the property  of Tata Consultancy Services Limited (TCSL) and is intended
-  solely for the usage of employees and  authorized clients of TCSL in
-  accordance with its policies as may be in force from time to time.
-  Unauthorized access or use of this system  may attract legal action, criminal
-  and/or civil.
-2.This system may be monitored in accordance with TCSL  security policy.
-3.By using or accessing this system, you hereby expressly consent to
-  (a)be bound by all policies and regulations of TCSL  then in existence
-     concerning the use and/or access of this system; and
-  (b)abide by all directions given by TCSL concerning the use and/or access
-     of this system;and
-  (c)TCSL  or its agents or representatives may monitor your activities while
-     you are using or accessing this system (including any data that is
-     transmitted by you) and this will not violate  your privacy rights; and
-  (d)be liable for any loss, damages or expenses  that may be caused to or
-     suffered by TCSL  due to  your use and/or access of this system and you
-     agree to indemnify TCSL  against all such losses,  damages or expenses
-     that may occur due to your use and/or  access of this system.
-4.In all matters related to the usage and/or  access of this system, the laws
-  of India shall be the governing law and the courts at Mumbai, India shall
-  have exclusive jurisdiction in all matters related thereto.
-5.This system and the contents hereof are the  sole and exclusive property of
-  TCSL  and may not be reproduced, stored, copied or archived in any manner
-  whatsoever either in full or in parts without the prior express consent of
-  TCSL. TCSL reserve all rights not expressly granted by TCSL in writing.
-6.If you do not agree to any of the terms above,  then do not use and/or
-  access this system.
+
 ********************************************************************************
 ^C
 
 banner motd ^C ********************************************************************************
-1.This computer system and all the components (including virtual components) is
-  the property  of Tata Consultancy Services Limited (TCSL) and is intended
-  solely for the usage of employees and  authorized clients of TCSL in
-  accordance with its policies as may be in force from time to time.
-  Unauthorized access or use of this system  may attract legal action, criminal
-  and/or civil.
-2.This system may be monitored in accordance with TCSL  security policy.
-3.By using or accessing this system, you hereby expressly consent to
-  (a)be bound by all policies and regulations of TCSL  then in existence
-     concerning the use and/or access of this system; and
-  (b)abide by all directions given by TCSL concerning the use and/or access
-     of this system;and
-  (c)TCSL  or its agents or representatives may monitor your activities while
-     you are using or accessing this system (including any data that is
-     transmitted by you) and this will not violate  your privacy rights; and
-  (d)be liable for any loss, damages or expenses  that may be caused to or
-     suffered by TCSL  due to  your use and/or access of this system and you
-     agree to indemnify TCSL  against all such losses,  damages or expenses
-     that may occur due to your use and/or  access of this system.
-4.In all matters related to the usage and/or  access of this system, the laws
-  of India shall be the governing law and the courts at Mumbai, India shall
-  have exclusive jurisdiction in all matters related thereto.
-5.This system and the contents hereof are the  sole and exclusive property of
-  TCSL  and may not be reproduced, stored, copied or archived in any manner
-  whatsoever either in full or in parts without the prior express consent of
-  TCSL. TCSL reserve all rights not expressly granted by TCSL in writing.
-6.If you do not agree to any of the terms above,  then do not use and/or
-  access this system.
+
 ********************************************************************************
 ^C
 
@@ -137,62 +52,6 @@ clock timezone IST +5 30
 service timestamps log datetime msec
 service timestamps log datetime localtime show-timezone
 
-ip access-list standard NTP_SRV
-10 permit 172.17.117.242 log
-20 remark ***NTP peers/servers to sync with***
-20 permit 172.18.18.121 log
-100 deny any log
-exit
-
-ip access-list standard SW_MGMT
-10 permit 10.18.170.0 0.0.1.255 log
-20 permit 10.17.194.28 log 
-30 permit 10.17.194.27 log
-40 permit 10.170.23.141 log
-50 permit 10.170.23.140 log
-60 permit 10.169.38.210 log
-70 permit 10.169.33.188 log
-80 permit 10.18.21.174 log
-90 permit 10.18.168.127 log 
-100 permit 172.18.112.0 0.0.1.255 log
-110 permit 10.194.22.128 0.0.0.15 log
-290 deny   any log
-exit
-
-ip access-list standard TGIM_Access
-10 permit 172.16.65.200
-20 permit 172.17.8.99
-30 permit 172.17.8.199
-40 permit 172.20.246.67
-50 permit 172.17.10.36
-60 permit 172.20.246.68
-70 permit 172.18.16.106
-80 permit 172.18.97.81
-200 deny any log
-exit 
-
-logging source-interface Vlan53
-logging host 10.18.168.232
-
-
-
-snmp-server community Tcs@c0rp#123 RO TGIM_Access
-snmp-server community ISE@DM1N RO
-snmp-server community n@C_T(S@U7H RO
-snmp-server trap-source Vlan53
-snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
-snmp-server enable traps mac-notification change move
-snmp-server enable traps stackwise
-snmp-server host 172.16.65.200 version 2c Tcs@c0rp#123 
-snmp-server host 172.17.8.99 version 2c Tcs@c0rp#123 
-snmp-server host 172.18.16.106 version 2c Tcs@c0rp#123
-snmp-server host 172.18.97.81 version 2c Tcs@c0rp#123 
-snmp-server host 172.17.8.199 version 2c Tcs@c0rp#123
-snmp-server host 172.20.246.67 version 2c Tcs@c0rp#123
-snmp-server host 172.17.10.36 version 2c Tcs@c0rp#123
-snmp-server host 172.20.246.68 version 2c Tcs@c0rp#123
-snmp-server host 172.17.8.99 version 2c Tcs@c0rp#123
-snmp-server host 172.16.65.200 version 2c Tcs@c0rp#123
 
 
 line con 0
@@ -202,36 +61,18 @@ login local
 transport output ssh
 
 line vty 0 4
-access-class SW_MGMT in
 exec-timeout 300 0
 login local
 transport input ssh
 transport output ssh
 exit
 
-line vty 5 31
-exec-timeout 300 0
-transport input none
-no exec
-transport output none
-exit
-
-ip route 199.204.56.74 255.255.255.255 Null0
-ip route 199.204.56.88 255.255.255.255 Null0
-ip route 199.204.56.89 255.255.255.255 Null0
-ip route 199.204.56.121 255.255.255.255 Null0
-
-
-ntp source Vlan53
-ntp access-group peer NTP_SRV
-ntp server 172.18.18.121 prefer
-ntp server 172.17.117.242
 
 mac address-table notification change
 mac address-table notification mac-move
 
 int vlan 1
-no ip dhcp client client-id ascii cisco-441a.5caa.3cc7-Vl1
+no ip dhcp client client-id ascii ***
 no ip address dhcp
 
 ! --- Auto-Save ZTP Script ---
