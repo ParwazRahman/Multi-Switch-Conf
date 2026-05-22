@@ -26,9 +26,9 @@ This file is hosted on the TFTP server (e.g., a desktop running Tftpd64). The sw
 Write your Hardening Commands
 !
 
-## Save Everything
-Below commands make sure that your efforts dont go vain when you reboot the switch. Basically it saves all the information stored in switch
+## 🛠️ Save Everything
 
+### Below commands make sure that your efforts dont go vain when you reboot the switch. Basically it saves all the information stored in switch
 
 ! --- Auto-Save ---
 event manager applet AUTO_SAVE_ZTP
