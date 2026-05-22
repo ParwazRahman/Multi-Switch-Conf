@@ -1,0 +1,18 @@
+configure terminal
+service dhcp
+ip dhcp excluded-address Provisional_Switch_IP Device_IP
+
+! Create the pool and set Option 150
+ip dhcp pool ZTP_POOL
+ network 192.168.*.* 255.255.*.*
+ default-router 192.168.1.*
+ option 150 ip Device_IP
+ bootfile network-confg
+ exit
+
+! Activate the gateway interface
+interface vlan 1
+ ip address 192.168.*.* 255.255.*.*
+ no shutdown
+ exit
+write memory
