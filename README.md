@@ -24,12 +24,11 @@ This file is hosted on the TFTP server (e.g., a desktop running Tftpd64). The sw
 ```text
 ! --- Baseline Security Hardening ---
 Write your Hardening Commands
-!
-
+```
 ## 🛠️ Save Everything
 
-### Below commands make sure that your efforts dont go vain when you reboot the switch. Basically it saves all the information stored in switch
-
+### Make sure that your efforts dont go vain when you reboot the switch. Basically it saves all the information stored in switch
+```text
 ! --- Auto-Save ---
 event manager applet AUTO_SAVE_ZTP
  event timer countdown time 60
@@ -41,3 +40,4 @@ event manager applet AUTO_SAVE_ZTP
  action 6.0 syslog msg "Auto-Save complete"
 !
 end
+```
